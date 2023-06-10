@@ -4,7 +4,13 @@ export const getAllFlags = () =>
   axiosInstance.get("/all").then((response) => response.data);
 
 export const getFlagByName = (name: string) =>
-  axiosInstance.get(`/name/${name}`).then((response) => response.data);
+  axiosInstance
+    .get(`/name/${name}`, {
+      params: {
+        fullText: true,
+      },
+    })
+    .then((response) => response.data);
 
 export const getNamesByCodes = (countries: string[]) =>
   axiosInstance
